@@ -27,7 +27,7 @@ public class AuthorRepository {
             this.authorList.add(ImmutableAuthor.builder().email(csvLine[0]).firstName(csvLine[1]).lastName(csvLine[2]).build());
         });
     }
-    
+
     public Author findAuthorByEmail(String authorEmail) {
         return authorList.stream().filter(author -> author.email().equals(authorEmail)).findAny().orElseThrow(() -> new RuntimeException("Author Email is not found"));
     }

@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Value.Immutable
-public abstract class Magazine {
+public abstract class Magazine implements Article {
 
     public abstract String title();
     public abstract String isbn();

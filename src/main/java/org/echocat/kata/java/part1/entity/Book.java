@@ -5,7 +5,7 @@ import org.immutables.value.Value;
 import java.util.List;
 
 @Value.Immutable
-public abstract class Book {
+public abstract class Book implements Article {
 
     public abstract String title();
     public abstract String description();

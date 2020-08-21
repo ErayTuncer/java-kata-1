@@ -1,15 +1,15 @@
 package org.echocat.kata.java.part1.repository;
 
 import org.echocat.kata.java.part1.entity.Author;
+import org.echocat.kata.java.part1.entity.Book;
 import org.echocat.kata.java.part1.entity.ImmutableMagazine;
 import org.echocat.kata.java.part1.entity.Magazine;
 import org.echocat.kata.java.part1.tool.CSVFileReader;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class MagazineRepository {
 
@@ -39,6 +39,15 @@ public class MagazineRepository {
                 e.printStackTrace();
             }
         });
+    }
+
+    public Optional<Magazine> findMagazineByISBN(String isbn) {
+        return magazineList.stream().filter(magazine -> magazine.isbn().equals(isbn)).findAny();
+    }
+
+    public Set<Magazine> findMagazinesByAuthor(Author author) {
+        Set<Magazine> magazines = new HashSet<>();
+        return magazineList.stream().filter(magazine -> magazine.authors().contains(author)).collect(Collectors.toSet());
     }
 
 }

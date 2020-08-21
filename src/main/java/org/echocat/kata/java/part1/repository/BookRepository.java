@@ -5,9 +5,9 @@ import org.echocat.kata.java.part1.entity.Book;
 import org.echocat.kata.java.part1.entity.ImmutableBook;
 import org.echocat.kata.java.part1.tool.CSVFileReader;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class BookRepository {
 
@@ -32,6 +32,15 @@ public class BookRepository {
 
             bookList.add(ImmutableBook.builder().title(csvLine[0]).isbn(csvLine[1]).addAllAuthors(authorList).description(csvLine[3]).build());
         });
+    }
+
+    public Optional<Book> findBookByISBN(String isbn) {
+        return bookList.stream().filter(book -> book.isbn().equals(isbn)).findAny();
+    }
+
+    public Set<Book> findBooksByAuthor(Author author) {
+        Set<Book> books = new HashSet<>();
+        return bookList.stream().filter(book -> book.authors().contains(author)).collect(Collectors.toSet());
     }
 
 }
