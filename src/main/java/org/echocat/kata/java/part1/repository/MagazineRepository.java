@@ -41,6 +41,10 @@ public class MagazineRepository {
         });
     }
 
+    public Set<Magazine> findAllMagazines() {
+        return magazineList.stream().collect(Collectors.toSet());
+    }
+
     public Optional<Magazine> findMagazineByISBN(String isbn) {
         return magazineList.stream().filter(magazine -> magazine.isbn().equals(isbn)).findAny();
     }

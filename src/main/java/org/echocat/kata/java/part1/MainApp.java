@@ -15,6 +15,7 @@ public class MainApp {
         Article article = library.findArticleByISBN("1024-5245-8584");
         Set<Article> articleSet = library.findArticlesByAuthorEmails(Arrays.asList(new String[]{"null-walter@echocat.org", "null-ferdinand@echocat.org"}));
 
+        library.printAllArticles();
     }
 
 }

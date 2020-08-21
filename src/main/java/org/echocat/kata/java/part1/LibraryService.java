@@ -50,4 +50,12 @@ public class LibraryService {
         return foundArticles;
     }
 
+    public void printAllArticles() {
+        Set<Article> articles = new HashSet<>();
+        articles.addAll(bookRepository.findAllBooks());
+        articles.addAll(magazineRepository.findAllMagazines());
+
+        articles.stream().forEach(article -> System.out.println(article));
+    }
+
 }

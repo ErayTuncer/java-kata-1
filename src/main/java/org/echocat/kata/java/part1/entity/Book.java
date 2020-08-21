@@ -12,4 +12,15 @@ public abstract class Book implements Article {
     public abstract List<Author> authors();
     public abstract String isbn();
 
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Article: Book").append("\n")
+                .append("  --> Title: ").append(title()).append("\n")
+                .append("  --> ISBN: ").append(isbn()).append("\n")
+                .append("  --> Description: ").append(description());
+
+        return stringBuilder.toString();
+    }
+
 }

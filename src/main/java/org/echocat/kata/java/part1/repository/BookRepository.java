@@ -34,6 +34,10 @@ public class BookRepository {
         });
     }
 
+    public Set<Book> findAllBooks() {
+        return bookList.stream().collect(Collectors.toSet());
+    }
+
     public Optional<Book> findBookByISBN(String isbn) {
         return bookList.stream().filter(book -> book.isbn().equals(isbn)).findAny();
     }
